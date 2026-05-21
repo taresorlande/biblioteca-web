@@ -1,6 +1,8 @@
 import executeQuery from "./db.js";
 import readCSV from "./read.js";
 
+await process.loadEnvFile('.env') // "node --env-file=.env ./js/main.js"
+
 let fileContent = await readCSV('./csv/livros.csv');
 fileContent.shift();
 
