@@ -1,0 +1,43 @@
+import mysql from 'mysql2/promise.js';
+
+// async function connect() {
+//     const connection = await mysql.createConnection({
+//         host: '127.0.0.1',
+//         port: 3306,
+//         user: 'root',
+//         password: '0000',
+//         database: 'library'
+//     });
+
+//     return connection;
+// }
+
+async function connect() {
+    const connection = await mysql.createConnection({
+        host: process.env.DB_HOST,
+        port: Number(process.env.DB_PORT),
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME
+    });
+
+    return connection;
+}
+
+async function executeQuery(query, params=[]) {
+    const connection = await connect();
+
+    try{
+        const result = await connection.execute(query, params);
+        return result;
+    }
+    catch (error) {
+        // console.log("Error on executeQuery:", error);
+        console.log(`Error on executeQuery: ${error}`);
+    }
+    finally{
+        await connection.end();
+    }
+}
+
+export default executeQuery;
