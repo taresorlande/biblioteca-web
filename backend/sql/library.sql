@@ -5,14 +5,27 @@ CREATE DATABASE IF NOT EXISTS library;
 
 USE library;
 
+CREATE TABLE authors (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(250) UNIQUE NOT NULL
+);
+
 CREATE TABLE books (
     id INT PRIMARY KEY AUTO_INCREMENT,
     isbn VARCHAR(16) UNIQUE NOT NULL,
     title VARCHAR(250) NOT NULL,
-    author VARCHAR(250) NOT NULL,
+    author INT NOT NULL,
     year CHAR(4),
-    pages INT
+    pages INT,
+
+    FOREIGN KEY (author) REFERENCES authors(id)
 );
+
+-- INSERT INTO authors (
+--     name
+-- ) VALUES (
+--     ?
+-- );
 
 -- INSERT INTO books (
 --     isbn,
@@ -27,3 +40,11 @@ CREATE TABLE books (
 --     ?,
 --     ?
 -- );
+
+-- SELECT 
+--     id,
+--     name
+-- FROM
+--     authors
+-- WHERE
+--     name = 'albert';
