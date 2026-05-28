@@ -1,7 +1,7 @@
 import executeQuery from "./db.js";
 import readCSV from "./read.js";
 
-await process.loadEnvFile('.env') // "node --env-file=.env ./js/main.js"
+await process.loadEnvFile('.env'); // "node --env-file=.env ./js/main.js"
 
 
 function normalize(text) {

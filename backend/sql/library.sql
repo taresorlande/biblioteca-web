@@ -21,6 +21,9 @@ CREATE TABLE books (
     FOREIGN KEY (author) REFERENCES authors(id)
 );
 
+DELETE FROM books
+WHERE id = 11198;
+
 -- INSERT INTO authors (
 --     name
 -- ) VALUES (
@@ -28,11 +31,11 @@ CREATE TABLE books (
 -- );
 
 -- INSERT INTO books (
---     isbn,
---     title,
---     author,
---     year,
---     pages
+    -- isbn,
+    -- title,
+    -- author,
+    -- year,
+    -- pages
 -- ) VALUES (
 --     ?,
 --     ?,
@@ -48,3 +51,20 @@ CREATE TABLE books (
 --     authors
 -- WHERE
 --     name = 'albert';
+
+-- SELECT
+--     books.id,
+--     isbn,
+--     title,
+--     author,
+--     name,
+--     year,
+--     pages
+-- FROM
+--     books
+-- JOIN 
+--     authors
+-- ON
+--     books.author = authors.id
+-- LIMIT
+--     20;
